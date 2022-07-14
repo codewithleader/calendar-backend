@@ -1,0 +1,21 @@
+{
+  "name": "calendar-backend",
+  "version": "1.0.0",
+  "description": "This is the backend (NodeJS) of the app calendar-app (React).",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon index.js",
+    "start": "node index.js"
+  },
+  "author": "Elis Antonio Perez <elisperezmusic@gmail.com> (https://www.instagram.com/elisperezmusic)",
+  "license": "MIT",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.1",
+    "express": "4.17.1",
+    "express-validator": "^6.14.2",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.4.4"
+  }
+}
