@@ -27,6 +27,9 @@ app.use(express.json());
 /* Authentication route */
 app.use('/api/auth', require('./routes/auth'));
 
+/* Events route. */
+app.use('/api/events', require('./routes/events'));
+
 /* Listening for a request on the port that we have defined. */
 app.listen(port, () => {
   console.log('Server is running on port:', port);

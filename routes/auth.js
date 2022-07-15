@@ -1,5 +1,5 @@
 /**
- * Routes for the authentication / User management
+ * Authentications Routes
  * Path: host + /api/auth
  */
 
