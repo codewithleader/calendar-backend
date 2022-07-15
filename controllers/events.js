@@ -6,7 +6,6 @@ const createEvent = async (req, res = response) => {
   try {
     /* Adding the user id to the event before save. */
     event.user = req.uid;
-    console.log(event);
 
     /* Saving the event to the database. */
     const saveEvent = await event.save();

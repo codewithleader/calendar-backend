@@ -10,6 +10,7 @@ const createUser = async (req = request, res = response) => {
     let user = await User.findOne({ email });
     if (user) {
       return res.status(400).json({
+        ok: false,
         message: 'User already exists!',
       });
     }
@@ -26,6 +27,7 @@ const createUser = async (req = request, res = response) => {
     const token = await generateJWT(user.id, user.name);
 
     res.status(201).json({
+      ok: true,
       message: 'Register user successfully!',
       uid: user.id,
       name: user.name,
@@ -34,6 +36,7 @@ const createUser = async (req = request, res = response) => {
   } catch (error) {
     console.log(error);
     res.status(500).json({
+      ok: false,
       message: 'An error here! Please contact the administrator',
     });
   }
@@ -46,6 +49,7 @@ const userLogin = async (req = request, res = response) => {
     const user = await User.findOne({ email });
     if (!user) {
       return res.status(400).json({
+        ok: false,
         message: 'User or password is incorrect! Email: Elis Delete this message',
       });
     }
@@ -54,6 +58,7 @@ const userLogin = async (req = request, res = response) => {
     const isPasswordMatch = bcrypt.compareSync(password, user.password);
     if (!isPasswordMatch) {
       return res.status(400).json({
+        ok: false,
         message: 'User or password is incorrect! Password: Elis Delete this message',
       });
     }
@@ -62,6 +67,7 @@ const userLogin = async (req = request, res = response) => {
     const token = await generateJWT(user.id, user.name);
 
     res.status(200).json({
+      ok: true,
       message: 'User login!',
       uid: user.id,
       name: user.name,
@@ -70,6 +76,7 @@ const userLogin = async (req = request, res = response) => {
   } catch (error) {
     console.log(error);
     res.status(500).json({
+      ok: false,
       message: 'An error here! Please contact the administrator',
     });
   }
@@ -80,6 +87,7 @@ const revalidateToken = async (req = request, res = response) => {
   // Generate a token
   const token = await generateJWT(uid, name);
   res.json({
+    ok: true,
     message: 'Revalidate token!',
     token,
   });
