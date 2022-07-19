@@ -6,7 +6,7 @@ const validateFields = (req = request, res = response, next) => {
   if (!errors.isEmpty()) {
     return res.status(400).json({
       ok: false,
-      message: 'Please provide all the required fields!',
+      msg: 'Please provide all the required fields!',
       errors: errors.mapped(),
     });
   }
